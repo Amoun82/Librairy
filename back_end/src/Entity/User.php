@@ -51,6 +51,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 180, unique: true)]
     private ?string $email = null;
 
+    #[Groups(['user:read', 'user:create', 'user:update'])]
     #[ORM\Column(type: 'json')]
     private array $roles = [];
 
@@ -62,15 +63,21 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private ?string $password = null;
 
-    #[ORM\Column(type: Types::DATETIME_MUTABLE)]
-    private ?\DateTimeInterface $created_at = null;
+    #[Assert\NotBlank(groups: ['user:create'])]
+    #[Groups(['user:create'])]
+    #[ORM\Column(type: Types::DATETIME_MUTABLE, name: 'created_at')]
+    private ?\DateTimeInterface $createdAt = null;
 
+    #[Groups(['user:read', 'user:update'])]
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $lastname = null;
 
+    #[Groups(['user:read', 'user:update'])]
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $surname = null;
 
+    #[Assert\NotBlank(groups: ['user:create'])]
+    #[Groups(['user:create'])]
     #[ORM\Column]
     private ?bool $is_active = null;
 
@@ -146,12 +153,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function getCreatedAt(): ?\DateTimeInterface
     {
-        return $this->created_at;
+        return $this->createdAt;
     }
 
-    public function setCreatedAt(\DateTimeInterface $created_at): static
+    public function setCreatedAt(\DateTimeInterface $createdAt): static
     {
-        $this->created_at = $created_at;
+        $this->createdAt = $createdAt;
 
         return $this;
     }
