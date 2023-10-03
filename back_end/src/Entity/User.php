@@ -74,12 +74,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[Groups(['user:read', 'user:update'])]
     #[ORM\Column(length: 255, nullable: true)]
-    private ?string $surname = null;
+    private ?string $firstname = null;
 
     #[Assert\NotBlank(groups: ['user:create'])]
     #[Groups(['user:create'])]
-    #[ORM\Column]
-    private ?bool $is_active = null;
+    #[ORM\Column(name: 'is_active')]
+    private ?bool $isActive = null;
 
     public function getId(): ?int
     {
@@ -175,26 +175,26 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getSurname(): ?string
+    public function getFirstname(): ?string
     {
-        return $this->surname;
+        return $this->firstname;
     }
 
-    public function setSurname(?string $surname): static
+    public function setFirstname(?string $firstname): static
     {
-        $this->surname = $surname;
+        $this->firstname = $firstname;
 
         return $this;
     }
 
     public function isIsActive(): ?bool
     {
-        return $this->is_active;
+        return $this->isActive;
     }
 
-    public function setIsActive(bool $is_active): static
+    public function setIsActive(bool $isActive): static
     {
-        $this->is_active = $is_active;
+        $this->isActive = $isActive;
 
         return $this;
     }
