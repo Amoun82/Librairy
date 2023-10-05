@@ -2,27 +2,20 @@ import React from 'react'
 
 import axios from 'axios';
 
-import { useNavigate } from 'react-router-dom';
 import { Formik, Form } from 'formik';
 
-import { schemaFormLogin } from '../yup/yupLogin';
-import { MyTextInput } from '../../../components/inputs/input';
-import { URL } from '../../constant/backURL';
+import { schemaFormLogin } from '../utils/Formik-yup/yup/yupLogin';
+import { MyTextInput } from '../components/inputs/input';
+import { URL } from '../utils/constant/backURL';
 
-import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { defaultValuesLogin } from '../default-value-form/defaultValuesLogin';
-import { useCookies } from 'react-cookie';
+import { defaultValuesLogin } from '../utils/Formik-yup/default-value-form/defaultValuesLogin';
 
-const FormikConnexion = () => {
 
-  const [cookies, setCookie] = useCookies()
-  const queryClient = useQueryClient();
-  const myClassName = 'flex my-3 flex-col md:h-24';
-  const myClassNameMessage = 'flex my-3 flex-col text-center text-2xl font-bold';
 
-  const navigate = useNavigate();
 
-  const message = localStorage.getItem('account')
+const Login = () => {
+
+  const myClassName = '';
 
   const submit = async (objet) => {
     
@@ -34,19 +27,14 @@ const FormikConnexion = () => {
       // ! une fois logé on récuperer les infos de l'utilisateur et on les stocks dans le query
       if (res.status === 200 && res.data.token) {
 
-        setCookie('token', res.data.token, { maxAge: 900000, httpOnly: true, secure: true, sameSite: 'strict' }) ;
+       /*  setCookie('token', res.data.token, { maxAge: 900000, httpOnly: true, secure: true, sameSite: 'strict' }) ;
         setCookie('islogged', true, { maxAge: 900000, httpOnly: true, secure: true, sameSite: 'strict' }) ;
         setCookie('roles', res.data.user.roles[0], { maxAge: 900000, httpOnly: true, secure: true, sameSite: 'strict' })
 
-        queryClient.setQueryData(['token'], res.data.token);
-        queryClient.setQueryData(['islogged'], true);
-        queryClient.setQueryData(['user'], res.data.user.identity);
-        queryClient.setQueryData(['id'], res.data.user.id);
-
-        localStorage.clear() ;
+         */
 
         // * l'utilisateur seras rediriger sur la home page
-        navigate("/");
+        
       }
       
     }).catch(function (error) {
@@ -54,19 +42,13 @@ const FormikConnexion = () => {
       console.log('erreur',error.response.status);
       if(error.response.status === 401)
       {
-        localStorage.setItem('account', 'inconnu, veuillez vous reconnectez ou inscrivez vous')
       }
-      navigate(0) ;
+      
     })
   };
 
   return (
-    <>
-      {/* le message de succes lors de l'inscription */}
-
-      { message && (<div className={myClassNameMessage}>{message}</div>) }
-
-      {console.log(queryClient)}
+    <div>
       <Formik
         initialValues={defaultValuesLogin}
         validationSchema={schemaFormLogin}
@@ -103,9 +85,9 @@ const FormikConnexion = () => {
           </Form>
         )}
       </Formik>
-
-    </>
+      test
+    </div>
   )
 }
 
-export default FormikConnexion
+export default Login
