@@ -9,16 +9,18 @@ import { MyTextInput } from '../components/inputs/input';
 import { URL } from '../utils/constant/backURL';
 
 import { defaultValuesLogin } from '../utils/Formik-yup/default-value-form/defaultValuesLogin';
-
-
+import { useCookies } from 'react-cookie';
 
 
 const Login = () => {
 
+  const [cookies, setCookie, removeCookie] = useCookies(['account']);
+
+
   const myClassName = '';
 
   const submit = async (objet) => {
-    
+
     await axios.post(URL.auth, {
       email: objet.email,
       password: objet.password,
@@ -27,28 +29,29 @@ const Login = () => {
       // ! une fois logé on récuperer les infos de l'utilisateur et on les stocks dans le query
       if (res.status === 200 && res.data.token) {
 
-       /*  setCookie('token', res.data.token, { maxAge: 900000, httpOnly: true, secure: true, sameSite: 'strict' }) ;
-        setCookie('islogged', true, { maxAge: 900000, httpOnly: true, secure: true, sameSite: 'strict' }) ;
+        setCookie('token', res.data.token, { maxAge: 900000, httpOnly: true, secure: true, sameSite: 'strict' });
+        setCookie('islogged', true, { maxAge: 900000, httpOnly: true, secure: true, sameSite: 'strict' });
         setCookie('roles', res.data.user.roles[0], { maxAge: 900000, httpOnly: true, secure: true, sameSite: 'strict' })
 
-         */
-
+        console.log(cookies);
         // * l'utilisateur seras rediriger sur la home page
-        
+        removeCookie('account') ;
       }
-      
+
     }).catch(function (error) {
       // handle error
-      console.log('erreur',error.response.status);
-      if(error.response.status === 401)
-      {
+      console.log('erreur', error.response.status);
+      if (error.response.status === 401) {
+        setCookie('account', 'inconnu, veuillez vous reconnectez ou inscrivez vous')
       }
-      
     })
   };
 
   return (
     <div>
+
+      {/* {cookies && console.log(cookies.account)} */}
+      {cookies && (<div className={myClassName}>{cookies.account}</div>)}
       <Formik
         initialValues={defaultValuesLogin}
         validationSchema={schemaFormLogin}
