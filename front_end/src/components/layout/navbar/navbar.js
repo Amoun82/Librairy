@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import BurgerMenu from "./burger-menu";
 import NavigationLinks from "./navigation-links";
@@ -6,8 +6,10 @@ import DesktopSearch from "./desktop-search";
 import Logo from "../../logo/logo";
 import SearchIcon from "./search-icon";
 import MobileSearchBar from "./mobile-search-bar";
+import Auth from "../../../contexts/Auth";
 
 const Navbar = () => {
+  const { isAuthenticated } = useContext(Auth);
   // État pour savoir si le menu burger est ouvert ou non
   const [isOpen, setIsOpen] = useState(false);
   // État pour savoir si le champ de recherche mobile est ouvert ou non
@@ -71,6 +73,9 @@ const Navbar = () => {
   //! ********************************** return **********************************
   return (
     <header>
+      {
+        console.log(isAuthenticated)
+      }
       <nav className="fixed top-0 w-full z-50">
         {/* Affiche le champ de recherche mobile si isSearchOpen est true */}
         {isSearchOpen ? (
@@ -106,15 +111,27 @@ const Navbar = () => {
               <DesktopSearch onSearch={search} />
             </div>
             <div className="flex">
-              <Link to='#'>
+
+            {(!isAuthenticated &&
+              <Link to='#' className="mx-1">
                 inscription
               </Link>
-              <Link to='#'>
+            )}
+            {(!isAuthenticated &&
+              <Link to='#' className="mx-1">
                 connexion
               </Link>
-              <Link to='#'>
+            )}
+              {(isAuthenticated && 
+                <Link to='#' className="mx-1">
+                  Mon compte
+                </Link>
+              )}
+            {(isAuthenticated &&
+              <Link to='#' className="mx-1">
                 deconnexion
               </Link>
+            )}
             </div>
           </div>
         )}

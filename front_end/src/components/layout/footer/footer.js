@@ -6,7 +6,7 @@ import Copyright from "./copyright";
 
 const Footer = () => {
   return (
-    <footer className="bg-primary py-8 md:pt-12 md:pb-8 md:px-8 border-t ">
+    <footer className="bg-primary py-8 md:pt-12 md:pb-8 md:px-8 border-t">
       <div className="container mx-auto">
         <div className="flex flex-wrap md:flex-nowrap mx-auto text-center md:text">
           {/* Logo */}
