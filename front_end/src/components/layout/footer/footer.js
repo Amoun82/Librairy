@@ -2,8 +2,6 @@ import React from "react";
 import Logo from "../../logo/logo";
 import Help from "./help-link";
 import Info from "./info-link";
-import NewsletterRegistration from "./newsletter-registration";
-import RS from "./rs-link";
 import Copyright from "./copyright";
 
 const Footer = () => {
@@ -22,11 +20,7 @@ const Footer = () => {
           {/* Informations */}
           <Info />
 
-          {/* Inscription à la newsletter */}
-          <NewsletterRegistration />
         </div>
-        {/* Icons */}.
-        <RS />
         {/* Copyright */}
         <Copyright />
       </div>

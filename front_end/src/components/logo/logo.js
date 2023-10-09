@@ -9,7 +9,7 @@ const Logo = ({ mobileWidth, desktopWidth }) => {
     <Link to="/" className="">
       <img
         src="../assets/img/logo-provisoire-angelfrip.jpg"
-        alt="Logo Angelfrip"
+        alt="Biblio en ligne"
         className={myClassName}
       />
     </Link>

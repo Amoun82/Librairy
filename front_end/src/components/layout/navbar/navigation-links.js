@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import Navlink from "./navlink";
 
 const NavigationLinks = ({ isOpen }) => {
@@ -36,32 +35,8 @@ const NavigationLinks = ({ isOpen }) => {
   const linksData = [
     {
       imageSrc: "../assets/img/pap.jpg",
-      altText: "Femme qui sort d'une séance de shopping",
-      text: "Prêt à porter",
-      to: "#",
-    },
-    {
-      imageSrc: "../assets/img/maroquinerie.jpg",
-      altText: "",
-      text: "Maroquinerie",
-      to: "#",
-    },
-    {
-      imageSrc: "../assets/img/accessoires.jpg",
-      altText: "",
-      text: "Accessoires",
-      to: "#",
-    },
-    {
-      imageSrc: "../assets/img/beaute.jpg",
-      altText: "",
-      text: "Beauté",
-      to: "#",
-    },
-    {
-      imageSrc: "../assets/img/decouvertes.jpg",
-      altText: "",
-      text: "Découvertes",
+      altText: "Ajouter les livres a votre bibliothéque",
+      text: "Livres",
       to: "#",
     },
   ];
@@ -86,21 +61,6 @@ const NavigationLinks = ({ isOpen }) => {
             isOpen ? "opacity-100 mx-5" : "opacity-0 md:opacity-100"
           }`}
         >
-          <Link
-            to="#"
-            className="h-16 mt-6 border-b border-t flex text-xl md:p-0 md:h-auto md:mt-0 md:border-none"
-          >
-            <div className="flex flex-grow items-center justify-center">
-              <div
-                className={`${
-                  isDotVisible ? "opacity-100" : "opacity-0"
-                } bg-red-500 w-3 h-3 md:h-2 rounded-full transition-opacity duration-500`}
-              ></div>
-              <p className="md:w-full block text-xl font-bold ml-3">
-                Live
-              </p>
-            </div>
-          </Link>
         </li>
       </ul>
     </div>

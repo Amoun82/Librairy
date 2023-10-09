@@ -9,7 +9,7 @@ const Help = () => {
         Contact
       </Link>
       <Link to="#" className="block">
-        À propos
+        F.A.Q
       </Link>
     </div>
   );

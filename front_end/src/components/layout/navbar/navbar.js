@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import BurgerMenu from "./burger-menu";
 import NavigationLinks from "./navigation-links";
 import DesktopSearch from "./desktop-search";
 import Logo from "../../logo/logo";
-import UserCartIcons from "./user&cart-icons";
 import SearchIcon from "./search-icon";
 import MobileSearchBar from "./mobile-search-bar";
 
@@ -99,13 +99,22 @@ const Navbar = () => {
               <div className="flex space-x-4 items-center">
                 <Logo mobileWidth="w-14" desktopWidth="w-16" />
                 <span className="hidden md:inline-block font-dancing text-3xl">
-                  AngelFrip
+                  Ma blibothéque en ligne
                 </span>
               </div>
               {/* Champ de recherche pour desktop */}
               <DesktopSearch onSearch={search} />
-              {/* Icônes d'utilisateur et de panier */}
-              <UserCartIcons />
+            </div>
+            <div className="flex">
+              <Link to='#'>
+                inscription
+              </Link>
+              <Link to='#'>
+                connexion
+              </Link>
+              <Link to='#'>
+                deconnexion
+              </Link>
             </div>
           </div>
         )}
