@@ -2,17 +2,22 @@ import React from 'react'
 
 import axios from 'axios';
 
-import { datetime } from '../../constant/dateTimeNow';
+
 import { useNavigate, Link } from 'react-router-dom';
 import { Formik, Form } from 'formik';
-import { schemaFormRegistration } from '../yup/yupRegistration';
-import { MyTextInput } from '../../../components/inputs/input';
-import { MyCheckbox } from '../../../components/inputs/chekbox';
-import { defaultValuesUser } from './../default-value-form/defaultValuesUser';
 
-import { URL } from '../../constant/backURL';
 
-const FormikRegistre = () => {
+import { MyCheckbox } from './../components/inputs/chekbox';
+import { MyTextInput } from './../components/inputs/input';
+
+
+
+import { datetime } from './../utils/constant/dateTimeNow';
+import { schemaFormRegistration } from './../utils/Formik-yup/yup/yupRegistration';
+import { defaultValuesUser } from './../utils/Formik-yup/default-value-form/defaultValuesUser';
+import { URL } from './../utils/constant/backURL';
+
+const Register = () => {
 
     const myClassName = 'flex my-2 flex-col md:h-24';
     
@@ -31,6 +36,7 @@ const FormikRegistre = () => {
             if (res.status === 201) {
                 //alert("votre compte a été crée");
                 localStorage.setItem('account', 'Votre compte a été crée, connectez-vous') ;
+
                 // * sert pour rafraichir la page une fois l'inscription faite pour la page login
                 navigate(0);
             }
@@ -82,7 +88,7 @@ const FormikRegistre = () => {
                     {/* le champ checkbox */}
                     <div className='flex flex-col mx-auto my-2 md:my-1'>
                         <MyCheckbox name="box_validation">
-                            Acceptez les condition d'utilisation <Link className='text-accent-2' to='#'>CGV</Link>
+                            Acceptez les condition d'utilisation <Link className='text-accent-2' to='#'>CGU</Link>
                         </MyCheckbox>
                     </div>
 
@@ -94,4 +100,4 @@ const FormikRegistre = () => {
     )
 }
 
-export default FormikRegistre
+export default Register

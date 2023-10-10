@@ -10,7 +10,7 @@ export const MyCheckbox = ({ children, ...props }) => {
                 {children}
             </label>
             {meta.touched && meta.error ? (
-                <div className="error">{meta.error}</div>
+                <div className="error text-red-500">{meta.error}</div>
             ) : null}
         </div>
     );

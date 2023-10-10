@@ -8,6 +8,8 @@ import { useState } from "react";
 import { HasAuthenticated } from "./services/AuthApi";
 import Auth from './contexts/Auth';
 import AuthenticatedRoute from "./components/AuthenticateRoute";
+import Register from "./pages/register";
+import Login from './pages/login';
 
 
 
@@ -16,10 +18,14 @@ function App() {
 
   return (
     <Auth.Provider value={{ isAuthenticated }}>
+      {console.log(Auth)}
       <Router>
         <Routes>
           <Route path="/" element={<Layout />}>
-            <Route path="/" element={<Home />} />
+            <Route path="/home" element={<Home />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/login" element={<Login />} />
+
             {/* <AuthenticatedRoute path="/" element={<Profil />} /> */}
           </Route>
         </Routes>

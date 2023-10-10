@@ -73,9 +73,6 @@ const Navbar = () => {
   //! ********************************** return **********************************
   return (
     <header>
-      {
-        console.log(isAuthenticated)
-      }
       <nav className="fixed top-0 w-full z-50">
         {/* Affiche le champ de recherche mobile si isSearchOpen est true */}
         {isSearchOpen ? (
@@ -113,12 +110,12 @@ const Navbar = () => {
             <div className="flex">
 
             {(!isAuthenticated &&
-              <Link to='#' className="mx-1">
+              <Link to='/register' className="mx-1">
                 inscription
               </Link>
             )}
             {(!isAuthenticated &&
-              <Link to='#' className="mx-1">
+              <Link to='/login' className="mx-1">
                 connexion
               </Link>
             )}

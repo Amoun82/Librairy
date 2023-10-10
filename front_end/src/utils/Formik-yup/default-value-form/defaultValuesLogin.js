@@ -1,4 +1,4 @@
 export const defaultValuesLogin = {
-    email: 'test@test.com',
-    password: 'string',
+    email: 'dufstef@hotmail.fr',
+    password: '@Droopy82',
 };

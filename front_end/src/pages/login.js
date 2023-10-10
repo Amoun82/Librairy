@@ -10,14 +10,16 @@ import { URL } from '../utils/constant/backURL';
 
 import { defaultValuesLogin } from '../utils/Formik-yup/default-value-form/defaultValuesLogin';
 import { useCookies } from 'react-cookie';
+import { useNavigate } from 'react-router-dom';
+import { HasAuthenticated } from '../services/AuthApi';
 
 
 const Login = () => {
-
+  const navigate = useNavigate();
   const [cookies, setCookie, removeCookie] = useCookies(['account']);
 
 
-  const myClassName = '';
+  const myClassName = 'flex my-2 flex-col md:h-24';
 
   const submit = async (objet) => {
 
@@ -33,9 +35,13 @@ const Login = () => {
         setCookie('islogged', true, { maxAge: 900000, httpOnly: true, secure: true, sameSite: 'strict' });
         setCookie('roles', res.data.user.roles[0], { maxAge: 900000, httpOnly: true, secure: true, sameSite: 'strict' })
 
+        console.log('je passe dans le login');
+        HasAuthenticated(res.data.token);
         console.log(cookies);
         // * l'utilisateur seras rediriger sur la home page
         removeCookie('account') ;
+
+        navigate('/home') ;
       }
 
     }).catch(function (error) {
@@ -84,11 +90,10 @@ const Login = () => {
                 placeholder="saisissez votre mot de passe"
               />
             </div>
-            <button className='my-2 md:my-1 bg-accent-2 self-center font-bold text-primary p-2 border-2 w-4/6 md:w-3/6' type="submit">Connexion</button>
+            <button className='my-2 md:my-1 bg-accent-2 self-center font-bold p-2 border-2 w-4/6 md:w-3/6' type="submit">Connexion</button>
           </Form>
         )}
       </Formik>
-      test
     </div>
   )
 }
