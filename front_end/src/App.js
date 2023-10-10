@@ -17,8 +17,7 @@ function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(HasAuthenticated())
 
   return (
-    <Auth.Provider value={{ isAuthenticated }}>
-      {console.log(Auth)}
+    <Auth.Provider value={{ isAuthenticated, setIsAuthenticated }}>
       <Router>
         <Routes>
           <Route path="/" element={<Layout />}>

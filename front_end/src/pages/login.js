@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import axios from 'axios';
 
@@ -15,6 +15,7 @@ import { HasAuthenticated } from '../services/AuthApi';
 
 
 const Login = () => {
+  const [user, setUser] = useState()
   const navigate = useNavigate();
   const [cookies, setCookie, removeCookie] = useCookies(['account']);
 
