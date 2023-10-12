@@ -33,3 +33,4 @@ security:
         - { path: ^/docs, roles: PUBLIC_ACCESS } # Allows accessing API documentations and Swagger UI docs
         - { path: ^/auth, roles: PUBLIC_ACCESS }
         - { path: ^/api/user, roles: IS_AUTHENTICATED_FULLY }
+        - { path: ^/api/book, roles: IS_AUTHENTICATED_FULLY }
