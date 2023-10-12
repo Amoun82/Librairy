@@ -15,7 +15,7 @@ import { HasAuthenticated } from '../services/AuthApi';
 
 
 const Login = () => {
-  const [user, setUser] = useState()
+  const [user, setUser] = useState();
   const navigate = useNavigate();
   const [cookies, setCookie, removeCookie] = useCookies(['account']);
 

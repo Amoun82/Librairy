@@ -3,15 +3,15 @@
 export function HasAuthenticated(token = null) {
 
 
-  if(token)
-  {
-    return true;
-  }
-  else
-  {
-    return false;
-  }
-
+  // if(token)
+  // {
+  //   return true;
+  // }
+  // else
+  // {
+  //   return false;
+  // }
+  return true
 }
 
 export function HasRoles() {

@@ -23,9 +23,15 @@ use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 #[ApiResource(
     operations: [
-        new GetCollection(),
+        new GetCollection(
+            security: "is_granted('ROLE_ADMIN')",
+            securityMessage: 'vous n\'etes pas admin.'
+        ),
         new Post(processor: UserPasswordHasher::class, validationContext: ['groups' => ['Default', 'user:create']]),
-        new Get(),
+        new Get(
+            security: "is_granted('ROLE_ADMIN') and object == user",
+            securityMessage: 'désolé, vous ne pouvez voir que votre compte.'
+        ),
         new Put(processor: UserPasswordHasher::class),
         new Patch(processor: UserPasswordHasher::class),
         new Delete(),
