@@ -24,6 +24,12 @@ services:
     # please note that last definitions always *replace* previous ones
 
 
+    # App\Swagger\SwaggerDecorator:
+    #     decorates: 'api_platform.swagger.normalizer.documentation'
+    #     arguments: ['@App\Swagger\SwaggerDecorator.inner']
+    #     autoconfigure: false
+
+
 # * ajouter pour le hash du mot de passe avec le fichier UserPasswordHasher dans le dossier State 
 # api/config/services.yaml
     App\State\UserPasswordHasher:
