@@ -7,7 +7,6 @@ import './App.css';
 import { useState } from "react";
 import { HasAuthenticated } from "./services/AuthApi";
 import Auth from './contexts/Auth';
-import AuthenticatedRoute from "./components/AuthenticateRoute";
 import Register from "./pages/register";
 import Login from './pages/login';
 import LogOut from "./components/account/logOut";
@@ -26,7 +25,6 @@ function App() {
             <Route path="/register" element={<Register />} />
             <Route path="/login" element={<Login />} />
             <Route path="/logout" element={<LogOut />} />
-
             <Route path="/profil" element={<Profil />} />
           </Route>
         </Routes>

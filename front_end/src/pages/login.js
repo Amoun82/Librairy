@@ -13,7 +13,6 @@ import { useCookies } from 'react-cookie';
 import { useNavigate } from 'react-router-dom';
 import { HasAuthenticated } from '../services/AuthApi';
 import Auth from '../contexts/Auth';
-import { getCookieLocal } from '../services/localeStorage';
 
 
 
@@ -46,7 +45,6 @@ const Login = () => {
         // * l'utilisateur seras rediriger sur la home page
         removeCookies('account') ;
 
-        // console.log(getCookieLocal()) ;
 
         navigate('/home') ;
       }

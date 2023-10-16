@@ -6,4 +6,5 @@ export default React.createContext({
   isAuthenticated: HasAuthenticated(),
   setIsAuthenticated: value => {},
   hasRoles: HasRoles(),
+  setRoles: value => {},
 });

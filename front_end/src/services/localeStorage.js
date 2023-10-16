@@ -12,6 +12,6 @@ export function addItem(localStorageName, newItem) {
 
 
 export function getCookieLocal() {
-  console.log(document.cookies.getAll());
+  console.log(document.cookies);
   // return document.cookie.islogged ;
 }
