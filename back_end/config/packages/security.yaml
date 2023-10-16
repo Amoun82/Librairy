@@ -17,24 +17,21 @@ security:
             pattern: ^/_(profiler|wdt)
             security: false
         api:
+            logout:
+                path: api_token_invalidate
             pattern: ^/api
             stateless: true
             entry_point: jwt
             json_login:
-                check_path: /api/login # or, if you have defined a route for your login path, the route name you used
+                check_path: /api/auth # The name in routes.yaml is enough for mapping
+                username_path: email
+                password_path: password
                 success_handler: lexik_jwt_authentication.handler.authentication_success
                 failure_handler: lexik_jwt_authentication.handler.authentication_failure
             jwt: ~
             refresh_jwt:
                 check_path: /api/token/refresh # or, you may use the `api_refresh_token` route name
 
-        main:
-            json_login:
-                check_path: /auth # The name in routes.yaml is enough for mapping
-                username_path: email
-                password_path: password
-                success_handler: lexik_jwt_authentication.handler.authentication_success
-                failure_handler: lexik_jwt_authentication.handler.authentication_failure
                 
     access_control:
         - { path: ^/$, roles: PUBLIC_ACCESS } # Allows accessing the Swagger UI

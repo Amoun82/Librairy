@@ -32,7 +32,6 @@ const Login = () => {
       // ! une fois logé on récuperer les infos de l'utilisateur et on les stocks dans le query
       if (res.status === 200 && res.data.token) {
 
-        setCookie('token', res.data.token, { maxAge: 900000, httpOnly: true, secure: true, sameSite: 'strict' });
         setCookie('islogged', true, { maxAge: 900000, httpOnly: true, secure: true, sameSite: 'strict' });
         setCookie('roles', res.data.user.roles[0], { maxAge: 900000, httpOnly: true, secure: true, sameSite: 'strict' })
 

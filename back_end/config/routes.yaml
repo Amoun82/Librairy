@@ -6,10 +6,13 @@ controllers:
 
 # api/config/routes.yaml
 auth:
-    path: /auth
+    path: /api/auth
     methods: ['POST']
 
 # config/routes.yaml
 api_refresh_token:
     path: /api/token/refresh
     controller: gesdinet.jwtrefreshtoken::refresh
+
+api_token_invalidate:
+    path: /api/token/invalidate
