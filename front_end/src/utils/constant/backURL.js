@@ -5,5 +5,5 @@ import { api } from "./api";
 export const URL = {
     postUser: api + "api/users",
     fetchArticle: api + "api/articles",
-    auth: api + "auth"
+    auth: api + "api/auth"
 }

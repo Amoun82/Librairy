@@ -12,7 +12,7 @@ const LogOut = () => {
         .replace(/^ +/, "")
         .replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/");
     })
-    navigate('/');
+    navigate('/home');
 
   })
   return (

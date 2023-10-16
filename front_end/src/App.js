@@ -10,6 +10,7 @@ import Auth from './contexts/Auth';
 import AuthenticatedRoute from "./components/AuthenticateRoute";
 import Register from "./pages/register";
 import Login from './pages/login';
+import LogOut from "./components/account/logOut";
 
 
 
@@ -24,8 +25,9 @@ function App() {
             <Route path="/home" element={<Home />} />
             <Route path="/register" element={<Register />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/logout" element={<LogOut />} />
 
-            {/* <AuthenticatedRoute path="/" element={<Profil />} /> */}
+            <Route path="/profil" element={<Profil />} />
           </Route>
         </Routes>
       </Router>

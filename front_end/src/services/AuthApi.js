@@ -11,7 +11,7 @@ export function HasAuthenticated(token = null) {
   // {
   //   return false;
   // }
-  return false ;
+  return true ;
 }
 
 export function HasRoles() {

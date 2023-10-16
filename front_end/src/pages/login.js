@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 
 import axios from 'axios';
 
@@ -12,12 +12,15 @@ import { defaultValuesLogin } from '../utils/Formik-yup/default-value-form/defau
 import { useCookies } from 'react-cookie';
 import { useNavigate } from 'react-router-dom';
 import { HasAuthenticated } from '../services/AuthApi';
+import Auth from '../contexts/Auth';
+
 
 
 const Login = () => {
   const [user, setUser] = useState();
   const navigate = useNavigate();
   const [cookies, setCookie, removeCookie] = useCookies(['account']);
+  const { isAuthenticated } = useContext(Auth) ;
 
 
   const myClassName = 'flex my-2 flex-col md:h-24';
@@ -36,7 +39,7 @@ const Login = () => {
         setCookie('roles', res.data.user.roles[0], { maxAge: 900000, httpOnly: true, secure: true, sameSite: 'strict' })
 
         console.log('je passe dans le login');
-        HasAuthenticated(res.data.token);
+        HasAuthenticated(true);
         console.log(cookies);
         // * l'utilisateur seras rediriger sur la home page
         removeCookie('account') ;
@@ -52,6 +55,13 @@ const Login = () => {
       }
     })
   };
+
+  useEffect(() =>{
+    if (isAuthenticated) {
+      navigate('/profil')
+      
+    }
+  }, [isAuthenticated])
 
   return (
     <div>

@@ -125,7 +125,7 @@ const Navbar = () => {
                 </Link>
               )}
             {(isAuthenticated &&
-              <Link to='#' className="mx-1">
+              <Link to='/logout' className="mx-1">
                 deconnexion
               </Link>
             )}
