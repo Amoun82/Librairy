@@ -13,13 +13,14 @@ import { useCookies } from 'react-cookie';
 import { useNavigate } from 'react-router-dom';
 import { HasAuthenticated } from '../services/AuthApi';
 import Auth from '../contexts/Auth';
+import { getCookieLocal } from '../services/localeStorage';
 
 
 
 const Login = () => {
   const [user, setUser] = useState();
   const navigate = useNavigate();
-  const [cookies, setCookie, removeCookie] = useCookies(['account']);
+  const [cookies, setCookies, removeCookies] = useCookies(['account']);
   const { isAuthenticated } = useContext(Auth) ;
 
 
@@ -33,16 +34,19 @@ const Login = () => {
     }).then((res) => {
 
       // ! une fois logé on récuperer les infos de l'utilisateur et on les stocks dans le query
-      if (res.status === 200 && res.data.token) {
-
-        setCookie('islogged', true, { maxAge: 900000, httpOnly: true, secure: true, sameSite: 'strict' });
-        setCookie('roles', res.data.user.roles[0], { maxAge: 900000, httpOnly: true, secure: true, sameSite: 'strict' })
+      if (res.status === 200) {
+        console.log('response API',res.data.user.roles[0]);
+        setCookies('islogged', true, { maxAge: 900000, httpOnly: true, secure: true, sameSite: 'strict' });
+        // setCookies('islogged', true);
+        setCookies('roles', res.data.user.roles[0])
 
         console.log('je passe dans le login');
         HasAuthenticated(true);
-        console.log(cookies);
+        console.log('cookie de react',cookies);
         // * l'utilisateur seras rediriger sur la home page
-        removeCookie('account') ;
+        removeCookies('account') ;
+
+        // console.log(getCookieLocal()) ;
 
         navigate('/home') ;
       }
@@ -51,7 +55,7 @@ const Login = () => {
       // handle error
       console.log('erreur', error.response.status);
       if (error.response.status === 401) {
-        setCookie('account', 'inconnu, veuillez vous reconnectez ou inscrivez vous')
+        setCookies('account', 'inconnu, veuillez vous reconnectez ou inscrivez vous')
       }
     })
   };
@@ -59,7 +63,6 @@ const Login = () => {
   useEffect(() =>{
     if (isAuthenticated) {
       navigate('/profil')
-      
     }
   }, [isAuthenticated])
 

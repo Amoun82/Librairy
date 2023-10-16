@@ -9,3 +9,9 @@ export function getItem(item) {
 export function addItem(localStorageName, newItem) {
   window.localStorage.setItem(localStorageName, newItem)
 }
+
+
+export function getCookieLocal() {
+  console.log(document.cookies.getAll());
+  // return document.cookie.islogged ;
+}

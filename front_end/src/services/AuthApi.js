@@ -1,6 +1,6 @@
 
 /* fonction retournant l'état du l'utilisateur */
-export function HasAuthenticated(token = null) {
+export function HasAuthenticated() {
 
 
   // if(token)

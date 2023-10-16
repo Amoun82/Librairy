@@ -1,8 +1,12 @@
 import React, { useEffect, useRef } from "react";
+import { useCookies } from 'react-cookie';
+
 
 const Home = () => {
   // TODO: Intégration de tout les liens
   const imageScrollPortrait = useRef(null);
+
+  const [cookies, setCookies, removeCookies] = useCookies();
 
   // Animation au scroll de la banner
   useEffect(() => {
@@ -28,7 +32,7 @@ const Home = () => {
         //*******************************! Section Explication *******************************//
       }
         Explication
-
+        {console.log(cookies)}
     </main>
   );
 };
