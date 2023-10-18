@@ -1,28 +1,28 @@
-import React from 'react'
+import React, { useEffect, useContext } from 'react'
 
 import axios from 'axios';
-
 
 import { useNavigate, Link } from 'react-router-dom';
 import { Formik, Form } from 'formik';
 
-
 import { MyCheckbox } from './../components/inputs/chekbox';
 import { MyTextInput } from './../components/inputs/input';
-
-
 
 import { datetime } from './../utils/constant/dateTimeNow';
 import { schemaFormRegistration } from './../utils/Formik-yup/yup/yupRegistration';
 import { defaultValuesUser } from './../utils/Formik-yup/default-value-form/defaultValuesUser';
 import { URL } from './../utils/constant/backURL';
+import Auth from '../contexts/Auth';
+
 
 const Register = () => {
 
+    const { isAuthenticated } = useContext(Auth);
+
     const myClassName = 'flex my-2 flex-col md:h-24';
-    
+
     // * function permettant l'envoye des datas à l'api pour l'inscription simple
-    
+
     const navigate = useNavigate();
     const submit = async (objet) => {
 
@@ -35,13 +35,19 @@ const Register = () => {
         }).then((res) => {
             if (res.status === 201) {
                 //alert("votre compte a été crée");
-                localStorage.setItem('account', 'Votre compte a été crée, connectez-vous') ;
+                localStorage.setItem('account', 'Votre compte a été crée, connectez-vous');
 
                 // * sert pour rafraichir la page une fois l'inscription faite pour la page login
                 navigate(0);
             }
         })
     };
+
+    useEffect(() => {
+        if (isAuthenticated) {
+            navigate('/profil')
+        }
+    }, [])
 
     return (
         <Formik

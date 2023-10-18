@@ -101,7 +101,7 @@ const Navbar = () => {
               <div className="flex space-x-4 items-center">
                 <Logo mobileWidth="w-14" desktopWidth="w-16" />
                 <span className="hidden md:inline-block font-dancing text-3xl">
-                  Ma blibothéque en ligne
+                  Ma bibliothéque en ligne
                 </span>
               </div>
               {/* Champ de recherche pour desktop */}
