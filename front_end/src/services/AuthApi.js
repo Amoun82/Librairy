@@ -1,18 +1,18 @@
 import { getItem, removeItem } from '../services/localeStorage';
 
 export function hasAuthenticated() {
-    const token = getItem('miniblogToken');
+    const token = getItem('Token');
     const result = token ? true : false;
 
     if (false === result) {
-        removeItem('miniblogToken');
+        removeItem('Token');
     }
 
     return result;
 }
 
 export function logout() {
-    removeItem('miniblogToken');
+    removeItem('Token');
 }
 
 export function HasRoles() {

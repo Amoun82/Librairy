@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from 'react'
+import React, { useEffect, useContext } from 'react'
 
 import axios from 'axios';
 
@@ -12,6 +12,7 @@ import { defaultValuesLogin } from '../utils/Formik-yup/default-value-form/defau
 import { useCookies } from 'react-cookie';
 import { useNavigate } from 'react-router-dom';
 import Auth from '../contexts/Auth';
+import { addItem } from '../services/localeStorage';
 
 
 
@@ -32,11 +33,11 @@ const Login = () => {
 
       // ! une fois logé on récuperer les infos de l'utilisateur et on les stocks dans le query
       if (res.status === 200) {
-        console.log('response API',res.data.user.roles[0]);
+        console.log('response API',res.data);
         // setCookies('islogged', true, { maxAge: 900000, httpOnly: true, secure: true, sameSite: 'strict' });
         setCookies('islogged', true);
         setCookies('roles', res.data.user.roles[0])
-
+        addItem('Token',res.data.refresh_token_expiration )
         setIsAuthenticated(true) ;
         // * l'utilisateur seras rediriger sur la home page
         removeCookies('account') ;

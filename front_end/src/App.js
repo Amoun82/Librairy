@@ -10,6 +10,7 @@ import Auth from './contexts/Auth';
 import Register from "./pages/register";
 import Login from './pages/login';
 import LogOut from "./components/account/logOut";
+import NotFound from "./pages/pageNotFound";
 
 
 
@@ -26,6 +27,7 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/logout" element={<LogOut />} />
             <Route path="/profil" element={<Profil />} />
+            <Route path='*' element={<NotFound />}/>
           </Route>
         </Routes>
       </Router>
