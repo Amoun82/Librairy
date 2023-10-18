@@ -58,7 +58,7 @@ const Login = () => {
     if (isAuthenticated) {
       navigate('/profil')
     }
-  }, [isAuthenticated])
+  }, [])
 
   return (
     <div>
