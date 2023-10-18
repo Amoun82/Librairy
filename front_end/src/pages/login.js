@@ -11,16 +11,14 @@ import { URL } from '../utils/constant/backURL';
 import { defaultValuesLogin } from '../utils/Formik-yup/default-value-form/defaultValuesLogin';
 import { useCookies } from 'react-cookie';
 import { useNavigate } from 'react-router-dom';
-import { HasAuthenticated } from '../services/AuthApi';
 import Auth from '../contexts/Auth';
 
 
 
 const Login = () => {
-  const [user, setUser] = useState();
   const navigate = useNavigate();
   const [cookies, setCookies, removeCookies] = useCookies(['account']);
-  const { isAuthenticated } = useContext(Auth) ;
+  const { isAuthenticated, setIsAuthenticated } = useContext(Auth) ;
 
 
   const myClassName = 'flex my-2 flex-col md:h-24';
@@ -35,16 +33,13 @@ const Login = () => {
       // ! une fois logé on récuperer les infos de l'utilisateur et on les stocks dans le query
       if (res.status === 200) {
         console.log('response API',res.data.user.roles[0]);
-        setCookies('islogged', true, { maxAge: 900000, httpOnly: true, secure: true, sameSite: 'strict' });
-        // setCookies('islogged', true);
+        // setCookies('islogged', true, { maxAge: 900000, httpOnly: true, secure: true, sameSite: 'strict' });
+        setCookies('islogged', true);
         setCookies('roles', res.data.user.roles[0])
 
-        console.log('je passe dans le login');
-        HasAuthenticated(true);
-        console.log('cookie de react',cookies);
+        setIsAuthenticated(true) ;
         // * l'utilisateur seras rediriger sur la home page
         removeCookies('account') ;
-
 
         navigate('/home') ;
       }

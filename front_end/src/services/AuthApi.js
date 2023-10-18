@@ -1,17 +1,18 @@
+import { getItem, removeItem } from '../services/localeStorage';
 
-/* fonction retournant l'état du l'utilisateur */
-export function HasAuthenticated() {
+export function hasAuthenticated() {
+    const token = getItem('miniblogToken');
+    const result = token ? true : false;
 
+    if (false === result) {
+        removeItem('miniblogToken');
+    }
 
-  // if(token)
-  // {
-  //   return true;
-  // }
-  // else
-  // {
-  //   return false;
-  // }
-  return false ;
+    return result;
+}
+
+export function logout() {
+    removeItem('miniblogToken');
 }
 
 export function HasRoles() {

@@ -6,7 +6,7 @@ const Home = () => {
   // TODO: Intégration de tout les liens
   const imageScrollPortrait = useRef(null);
 
-  const [cookies, setCookies, removeCookies] = useCookies();
+  const [cookies] = useCookies();
 
   // Animation au scroll de la banner
   useEffect(() => {
@@ -32,7 +32,8 @@ const Home = () => {
         //*******************************! Section Explication *******************************//
       }
         Explication
-        {console.log(cookies)}
+        {console.log('document',document.cookie.islogged)}
+        {console.log('cookies react',cookies.islogged)}
     </main>
   );
 };

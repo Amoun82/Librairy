@@ -5,7 +5,7 @@ import Profil from "./pages/profil";
 
 import './App.css';
 import { useState } from "react";
-import { HasAuthenticated } from "./services/AuthApi";
+import { hasAuthenticated } from "./services/AuthApi";
 import Auth from './contexts/Auth';
 import Register from "./pages/register";
 import Login from './pages/login';
@@ -14,7 +14,7 @@ import LogOut from "./components/account/logOut";
 
 
 function App() {
-  const [isAuthenticated, setIsAuthenticated] = useState(HasAuthenticated())
+  const [isAuthenticated, setIsAuthenticated] = useState(hasAuthenticated())
 
   return (
     <Auth.Provider value={{ isAuthenticated, setIsAuthenticated }}>

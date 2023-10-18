@@ -1,9 +1,9 @@
 import React from 'react';
 
-import { HasRoles, HasAuthenticated } from '../services/AuthApi' ;
+import { HasRoles, hasAuthenticated } from '../services/AuthApi' ;
 
 export default React.createContext({
-  isAuthenticated: HasAuthenticated(),
+  isAuthenticated: hasAuthenticated(),
   setIsAuthenticated: value => {},
   hasRoles: HasRoles(),
   setRoles: value => {},

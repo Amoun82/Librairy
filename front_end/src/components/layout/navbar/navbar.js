@@ -120,7 +120,7 @@ const Navbar = () => {
               </Link>
             )}
               {(isAuthenticated && 
-                <Link to='#' className="mx-1">
+                <Link to='/profil' className="mx-1">
                   Mon compte
                 </Link>
               )}
