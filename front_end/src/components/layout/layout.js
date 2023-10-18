@@ -7,7 +7,7 @@ const Layout = () => {
   return (
     <div>
       <Navbar />
-      <main className="mt-[64px] md:mt-[150px]"><Outlet /></main>
+      <main className="mt-[90px] md:mt-[150px]"><Outlet /></main>
       <Footer />
     </div>
   );
