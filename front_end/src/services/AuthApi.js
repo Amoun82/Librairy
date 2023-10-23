@@ -2,13 +2,13 @@ import { getItem, removeItem } from '../services/localeStorage';
 
 export function hasAuthenticated() {
     const token = getItem('Token');
-    const result = token ? true : false;
+    const resultToken = token ? true : false;
 
-    if (false === result) {
+    if (false === resultToken) {
         removeItem('Token');
     }
 
-    return result;
+    return resultToken;
 }
 
 export function logout() {
@@ -16,5 +16,23 @@ export function logout() {
 }
 
 export function HasRoles() {
-  return 'role_user' ;
+    const roles = getItem('Roles');
+    const resultRoles = roles ? true : false;
+
+    if (false === resultRoles) {
+        removeItem('Roles');
+    }
+
+    return roles;
+}
+
+export function hasId(){
+    const Id = getItem('Id');
+    const resultRoles = Id ? true : false;
+
+    if (false === resultRoles) {
+        removeItem('Id');
+    }
+
+    return Id;
 }
