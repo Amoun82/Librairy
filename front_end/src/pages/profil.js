@@ -18,12 +18,12 @@ const Profil = () => {
       navigate('/home')
     }else{
       console.log(getItem('Token'));
-      // const profil = async (objet) => {
-      //   await axios.get(URL.user + `/${hasId}`, getItem('Token')).then((res) => {
-      //     console.log(res);
-      //   })
-      // }
-      // profil();
+      const profil = async (objet) => {
+        await axios.get(URL.user + `/${hasId}`, ).then((res) => {
+          console.log(res);
+        })
+      }
+      profil();
     }
   }, [])
 

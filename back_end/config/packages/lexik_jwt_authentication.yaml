@@ -10,7 +10,7 @@ lexik_jwt_authentication:
         password_path: password
     
     set_cookies:
-        "cookies":
+        "Token":
             lifetime: 3600
 
     token_extractors:
@@ -18,4 +18,4 @@ lexik_jwt_authentication:
             enabled: true
         cookie:
             enabled: true
-            name: "cookies"
+            name: "Token"

@@ -16,14 +16,14 @@ export function logout() {
 }
 
 export function HasRoles() {
-    const roles = getItem('Roles');
-    const resultRoles = roles ? true : false;
+    const Roles = getItem('Roles');
+    const resultRoles = Roles ? true : false;
 
     if (false === resultRoles) {
         removeItem('Roles');
     }
 
-    return roles;
+    return Roles;
 }
 
 export function hasId(){

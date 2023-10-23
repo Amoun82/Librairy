@@ -37,14 +37,14 @@ const Login = () => {
         // setCookies('islogged', true, { maxAge: 900000, httpOnly: true, secure: true, sameSite: 'strict' });
         setCookies('islogged', true);
         setCookies('roles', res.data.user.roles[0]) ;
-        addItem('Token',res.data.refresh_token_expiration ) ;
+        addItem('Token',res.data.refreshToken ) ;
         addItem('Roles',res.data.user.roles[0] ) ;
         addItem('Id',res.data.user.id ) ;
         setIsAuthenticated(true) ;
         // * l'utilisateur seras rediriger sur la home page
         removeCookies('account') ;
 
-        // navigate('/home') ;
+        navigate('/home') ;
       }
 
     }).catch(function (error) {
