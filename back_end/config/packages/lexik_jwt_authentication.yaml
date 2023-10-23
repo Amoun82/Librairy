@@ -19,4 +19,5 @@ lexik_jwt_authentication:
         cookie:
             enabled: true
             name: "Token"
+    # permet l'envoie du token malgre l'intercepction
     remove_token_from_body_when_cookies_used: false
