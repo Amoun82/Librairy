@@ -19,3 +19,4 @@ lexik_jwt_authentication:
         cookie:
             enabled: true
             name: "Token"
+    remove_token_from_body_when_cookies_used: false

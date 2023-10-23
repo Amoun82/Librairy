@@ -28,9 +28,9 @@ export function HasRoles() {
 
 export function hasId(){
     const Id = getItem('Id');
-    const resultRoles = Id ? true : false;
+    const resultId = Id ? true : false;
 
-    if (false === resultRoles) {
+    if (false === resultId) {
         removeItem('Id');
     }
 

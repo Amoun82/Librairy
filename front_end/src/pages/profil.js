@@ -18,8 +18,14 @@ const Profil = () => {
       navigate('/home')
     }else{
       console.log(getItem('Token'));
+      console.log(getItem('Id'));
       const profil = async (objet) => {
-        await axios.get(URL.user + `/${hasId}`, ).then((res) => {
+        await axios.get(URL.user + `/${getItem('Id')}`, {
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: 'Bearer ' + getItem('Token') //the token is a variable which holds the token
+          }
+        } ).then((res) => {
           console.log(res);
         })
       }

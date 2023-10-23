@@ -19,7 +19,7 @@ import { addItem } from '../services/localeStorage';
 const Login = () => {
   const navigate = useNavigate();
   const [cookies, setCookies, removeCookies] = useCookies(['account']);
-  const { isAuthenticated, setIsAuthenticated } = useContext(Auth) ;
+  const { isAuthenticated, setIsAuthenticated, setHasRoles } = useContext(Auth) ;
 
 
   const myClassName = 'flex my-2 flex-col md:h-24';
@@ -37,7 +37,7 @@ const Login = () => {
         // setCookies('islogged', true, { maxAge: 900000, httpOnly: true, secure: true, sameSite: 'strict' });
         setCookies('islogged', true);
         setCookies('roles', res.data.user.roles[0]) ;
-        addItem('Token',res.data.refreshToken ) ;
+        addItem('Token',res.data.token ) ;
         addItem('Roles',res.data.user.roles[0] ) ;
         addItem('Id',res.data.user.id ) ;
         setIsAuthenticated(true) ;
