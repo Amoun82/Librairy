@@ -8,14 +8,8 @@ export const defaultValuesUser = {
     password: '',
     passwordConfirmation: '',
     box_validation: false,
-    gender: "",
     lastname: "",
     firstname: "",
-    phone: "",
-    cp: "",
-    adress: "",
-    city: "",
-    additionalAdress: "",
     createdAt: datetime,
     isActive: true
 };

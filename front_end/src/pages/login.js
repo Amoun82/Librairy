@@ -43,6 +43,7 @@ const Login = () => {
         setIsAuthenticated(true) ;
         // * l'utilisateur seras rediriger sur la home page
         removeCookies('account') ;
+        removeCookies('alert') ;
 
         navigate('/home') ;
       }
@@ -63,7 +64,7 @@ const Login = () => {
   }, [])
 
   return (
-    <div>
+    <>
 
       {/* {cookies && console.log(cookies.account)} */}
       {cookies && (<div className={myClassName}>{cookies.account}</div>)}
@@ -103,7 +104,7 @@ const Login = () => {
           </Form>
         )}
       </Formik>
-    </div>
+    </>
   )
 }
 
