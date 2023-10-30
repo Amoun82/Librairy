@@ -32,7 +32,7 @@ const Profil = () => {
             email: res.data.email,
             lastname: res.data.lastname,
             firstname: res.data.firstname
-            
+
           })
 
         })
@@ -44,12 +44,18 @@ const Profil = () => {
   return (
     <div>Profil
       {console.log('profil', isAuthenticated, hasRoles, hasId)}
-      { user && (console.log(user))}
+      {user && (console.log(user))}
       {user && (
         <div>
-          {user.email}
-          {user.lastname}
-          {user.firstname}
+          <p>
+            {user.email}
+          </p>
+          <p>
+            {user.lastname}
+          </p>
+          <p>
+            {user.firstname}
+          </p>
         </div>
       )}
     </div>
