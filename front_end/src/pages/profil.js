@@ -3,21 +3,21 @@ import React, { useEffect, useContext, useState } from 'react'
 import Auth from '../contexts/Auth';
 import { useNavigate } from 'react-router-dom';
 
-import axios from 'axios' ;
+import axios from 'axios';
 import { URL } from '../utils/constant/backURL';
 import { getItem } from '../services/localeStorage';
 
 const Profil = () => {
   const navigate = useNavigate();
-  const { isAuthenticated, hasRoles, hasId } = useContext(Auth) ;
-  const [user, setUser] = useState({}) ;
+  const { isAuthenticated, hasRoles, hasId } = useContext(Auth);
+  const [user, setUser] = useState({});
 
-  
 
-  useEffect(() =>{
+
+  useEffect(() => {
     if (!isAuthenticated) {
       navigate('/home')
-    }else{
+    } else {
       console.log(getItem('Token'));
       console.log(getItem('Id'));
       const profil = async (objet) => {
@@ -26,9 +26,12 @@ const Profil = () => {
             'Content-Type': 'application/json',
             Authorization: 'Bearer ' + getItem('Token') //the token is a variable which holds the token
           }
-        } ).then((res) => {
+        }).then((res) => {
           console.log(res.data);
-
+          setUser({
+            email: res.data.email,
+            
+          })
 
         })
       }
@@ -39,7 +42,7 @@ const Profil = () => {
   return (
     <div>Profil
       {console.log('profil', isAuthenticated, hasRoles, hasId)}
-
+      { user && (console.log(user))}
     </div>
   )
 }

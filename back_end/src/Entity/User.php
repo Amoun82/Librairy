@@ -29,7 +29,7 @@ use Symfony\Component\Validator\Constraints as Assert;
         ),
         new Post(processor: UserPasswordHasher::class, validationContext: ['groups' => ['Default', 'user:create']]),
         new Get(
-            security: "is_granted('ROLE_ADMIN') and object == user",
+            security: "is_granted('ROLE_ADMIN') or object == user",
             securityMessage: 'désolé, vous ne pouvez voir que votre compte.'
         ),
         new Put(processor: UserPasswordHasher::class),

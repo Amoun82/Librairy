@@ -19,7 +19,7 @@ import { addItem } from '../services/localeStorage';
 const Login = () => {
   const navigate = useNavigate();
   const [cookies, setCookies, removeCookies] = useCookies(['account']);
-  const { isAuthenticated, setIsAuthenticated, setHasRoles } = useContext(Auth) ;
+  const { isAuthenticated, setIsAuthenticated, setHasRoles, setHasId } = useContext(Auth) ;
 
 
   const myClassName = 'flex my-2 flex-col md:h-24';
@@ -40,6 +40,7 @@ const Login = () => {
         addItem('Id',res.data.user.id ) ;
         setIsAuthenticated(true) ;
         setHasRoles(res.data.user.roles[0]) ;
+        setHasId(res.data.user.id) ;
 
         // * l'utilisateur seras rediriger sur la home page
         removeCookies('account') ;
