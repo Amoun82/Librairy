@@ -12,7 +12,21 @@ const Profil = () => {
   const { isAuthenticated, hasRoles, hasId } = useContext(Auth);
   const [user, setUser] = useState({});
 
-
+  const profil = async () => {
+    await axios.get(URL.user + `/${getItem('Id')}`, {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: 'Bearer ' + getItem('Token') //the token is a variable which holds the token
+      }
+    }).then((res) => {
+      console.log(res.data);
+      setUser({
+        email: res.data.email,
+        lastname: res.data.lastname,
+        firstname: res.data.firstname
+      })
+    })
+  }
 
   useEffect(() => {
     if (!isAuthenticated) {
@@ -20,23 +34,7 @@ const Profil = () => {
     } else {
       console.log(getItem('Token'));
       console.log(getItem('Id'));
-      const profil = async (objet) => {
-        await axios.get(URL.user + `/${getItem('Id')}`, {
-          headers: {
-            'Content-Type': 'application/json',
-            Authorization: 'Bearer ' + getItem('Token') //the token is a variable which holds the token
-          }
-        }).then((res) => {
-          console.log(res.data);
-          setUser({
-            email: res.data.email,
-            lastname: res.data.lastname,
-            firstname: res.data.firstname
-
-          })
-
-        })
-      }
+      
       profil();
     }
   }, [])
