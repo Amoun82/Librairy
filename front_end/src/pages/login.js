@@ -35,12 +35,12 @@ const Login = () => {
       if (res.status === 200) {
         console.log('response API',res.data);
         // setCookies('islogged', true, { maxAge: 900000, httpOnly: true, secure: true, sameSite: 'strict' });
-        setCookies('islogged', true);
-        setCookies('roles', res.data.user.roles[0]) ;
         addItem('Token',res.data.token ) ;
         addItem('Roles',res.data.user.roles[0] ) ;
         addItem('Id',res.data.user.id ) ;
         setIsAuthenticated(true) ;
+        setHasRoles(res.data.user.roles[0]) ;
+
         // * l'utilisateur seras rediriger sur la home page
         removeCookies('account') ;
         removeCookies('alert') ;

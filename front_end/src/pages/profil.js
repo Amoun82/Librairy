@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from 'react'
+import React, { useEffect, useContext, useState } from 'react'
 
 import Auth from '../contexts/Auth';
 import { useNavigate } from 'react-router-dom';
@@ -10,6 +10,7 @@ import { getItem } from '../services/localeStorage';
 const Profil = () => {
   const navigate = useNavigate();
   const { isAuthenticated, hasRoles, hasId } = useContext(Auth) ;
+  const [user, setUser] = useState({}) ;
 
   
 
@@ -26,7 +27,9 @@ const Profil = () => {
             Authorization: 'Bearer ' + getItem('Token') //the token is a variable which holds the token
           }
         } ).then((res) => {
-          console.log(res);
+          console.log(res.data);
+
+
         })
       }
       profil();

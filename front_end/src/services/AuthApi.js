@@ -13,6 +13,8 @@ export function hasAuthenticated() {
 
 export function logout() {
     removeItem('Token');
+    removeItem('Roles');
+    removeItem('Id');
 }
 
 export function HasRoles() {
@@ -26,7 +28,7 @@ export function HasRoles() {
     return Roles;
 }
 
-export function hasId(){
+export function HasId(){
     const Id = getItem('Id');
     const resultId = Id ? true : false;
 

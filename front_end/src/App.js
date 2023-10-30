@@ -5,7 +5,7 @@ import Profil from "./pages/profil";
 
 import './App.css';
 import { useState } from "react";
-import { hasAuthenticated } from "./services/AuthApi";
+import { hasAuthenticated, HasRoles, HasId } from "./services/AuthApi";
 import Auth from './contexts/Auth';
 import Register from "./pages/register";
 import Login from './pages/login';
@@ -15,10 +15,12 @@ import NotFound from "./pages/pageNotFound";
 
 
 function App() {
-  const [isAuthenticated, setIsAuthenticated] = useState(hasAuthenticated())
+  const [isAuthenticated, setIsAuthenticated] = useState(hasAuthenticated()) ;
+  const [hasRoles , setHasRoles] = useState(HasRoles()) ;
+  const [hasId , setHasId] = useState(HasId()) ;
 
   return (
-    <Auth.Provider value={{ isAuthenticated, setIsAuthenticated }}>
+    <Auth.Provider value={{ isAuthenticated, setIsAuthenticated, hasRoles, setHasRoles, hasId, setHasId }}>
       <Router>
         <Routes>
           <Route path="/" element={<Layout />}>
