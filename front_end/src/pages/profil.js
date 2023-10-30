@@ -30,6 +30,8 @@ const Profil = () => {
           console.log(res.data);
           setUser({
             email: res.data.email,
+            lastname: res.data.lastname,
+            firstname: res.data.firstname
             
           })
 
@@ -43,6 +45,13 @@ const Profil = () => {
     <div>Profil
       {console.log('profil', isAuthenticated, hasRoles, hasId)}
       { user && (console.log(user))}
+      {user && (
+        <div>
+          {user.email}
+          {user.lastname}
+          {user.firstname}
+        </div>
+      )}
     </div>
   )
 }
