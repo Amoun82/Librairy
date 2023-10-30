@@ -6,7 +6,7 @@ const Logo = ({ mobileWidth, desktopWidth }) => {
   const myClassName = `${mobileWidth} ${"md:" + desktopWidth} mx-auto`;
 
   return (
-    <Link to="/" className="">
+    <Link to="/home" className="">
       <img
         src=""
         alt="Biblio en ligne"
