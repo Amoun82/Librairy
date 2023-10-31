@@ -25,6 +25,12 @@ const Profil = () => {
         lastname: res.data.lastname,
         firstname: res.data.firstname
       })
+    }).catch(function (error) {
+      // handle error
+      console.log('erreur', error.response.status);
+      if (error.response.status === 401) {
+        navigate('/logout')
+      }
     })
   }
 
@@ -40,11 +46,12 @@ const Profil = () => {
   }, [])
 
   return (
-    <div className=''>Profil
-      {console.log('profil', isAuthenticated, hasRoles, hasId)}
+    <div className='flex justify-center'>
+    {console.log('profil', isAuthenticated, hasRoles, hasId)}
       {user && (console.log(user))}
       {user && (
         <div>
+          Profil
           <p>
             {user.email}
           </p>

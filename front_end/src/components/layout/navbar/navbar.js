@@ -65,7 +65,6 @@ const Navbar = () => {
   };
 
   // Fonction pour gérer la recherche (assignée à la barre de recherche mobile et desktop)
-  // TODO: Mettre à jour avec une logique de recherche réelle
   const search = (searchValue) => {
     console.log("Searching for:", searchValue);
   };
@@ -73,7 +72,7 @@ const Navbar = () => {
   //! ********************************** return **********************************
   return (
     <header>
-      <nav className="fixed top-0 w-full z-50">
+      <nav className="fixed bg-cyan-500 top-0 w-full z-50">
         {/* Affiche le champ de recherche mobile si isSearchOpen est true */}
         {isSearchOpen ? (
           <MobileSearchBar
