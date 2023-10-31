@@ -6,6 +6,9 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { URL } from '../utils/constant/backURL';
 import { getItem } from '../services/localeStorage';
+import { Formik, Form } from 'formik';
+import { schemaFormUser } from '../utils/Formik-yup/yup/yupUser';
+
 
 const Profil = () => {
   const navigate = useNavigate();
@@ -40,28 +43,48 @@ const Profil = () => {
     } else {
       console.log(getItem('Token'));
       console.log(getItem('Id'));
-      
+
       profil();
     }
   }, [])
 
   return (
     <div className='flex justify-center'>
-    {console.log('profil', isAuthenticated, hasRoles, hasId)}
+      {console.log('profil', isAuthenticated, hasRoles, hasId)}
       {user && (console.log(user))}
       {user && (
-        <div>
-          Profil
-          <p>
-            {user.email}
-          </p>
-          <p>
-            {user.lastname}
-          </p>
-          <p>
-            {user.firstname}
-          </p>
-        </div>
+
+        <Formik
+          initialValues={user}
+          validationSchema={schemaFormUser}
+          onSubmit={(values) => {
+            
+
+            // setTimeout(() => {
+            //   alert(JSON.stringify(values, null, 2));
+            //   setSubmitting(false);
+            // }, 400);
+          }}
+        >
+          {() => (
+            <Form className='flex flex-col p-2'>
+              <div>
+                Profil
+                <p>
+                  {user.email}
+                </p>
+                <p>
+                  {user.lastname}
+                </p>
+                <p>
+                  {user.firstname}
+                </p>
+              </div>
+
+              <button className='my-2 md:my-1 bg-accent-2 self-center font-bold p-2 border-2' type="submit">Modifier</button>
+            </Form>
+          )}
+        </Formik>
       )}
     </div>
   )

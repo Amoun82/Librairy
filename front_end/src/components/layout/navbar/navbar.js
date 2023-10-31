@@ -99,35 +99,37 @@ const Navbar = () => {
 
               <div className="flex space-x-4 items-center">
                 <Logo mobileWidth="w-14" desktopWidth="w-16" />
-                <span className="hidden md:inline-block font-dancing text-3xl">
-                  Ma bibliothéque en ligne
-                </span>
+                <Link to='/home' className="mx-1">
+                  <span className="hidden md:inline-block font-dancing text-3xl">
+                    Ma bibliothéque en ligne
+                  </span>
+                </Link>
               </div>
               {/* Champ de recherche pour desktop */}
               <DesktopSearch onSearch={search} />
             </div>
             <div className="flex">
 
-            {(!isAuthenticated &&
-              <Link to='/register' className="mx-1">
-                inscription
-              </Link>
-            )}
-            {(!isAuthenticated &&
-              <Link to='/login' className="mx-1">
-                connexion
-              </Link>
-            )}
-              {(isAuthenticated && 
+              {(!isAuthenticated &&
+                <Link to='/register' className="mx-1">
+                  inscription
+                </Link>
+              )}
+              {(!isAuthenticated &&
+                <Link to='/login' className="mx-1">
+                  connexion
+                </Link>
+              )}
+              {(isAuthenticated &&
                 <Link to='/profil' className="mx-1">
                   Mon compte
                 </Link>
               )}
-            {(isAuthenticated &&
-              <Link to='/logout' className="mx-1">
-                deconnexion
-              </Link>
-            )}
+              {(isAuthenticated &&
+                <Link to='/logout' className="mx-1">
+                  deconnexion
+                </Link>
+              )}
             </div>
           </div>
         )}
