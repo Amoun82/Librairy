@@ -16,6 +16,8 @@ const Profil = () => {
   const { isAuthenticated, hasRoles, hasId } = useContext(Auth);
   const [user, setUser] = useState({});
 
+  const myClassName = 'flex my-2 flex-col md:h-24';
+
   const profil = async () => {
     await axios.get(URL.user + `/${getItem('Id')}`, {
       headers: {
@@ -59,7 +61,7 @@ const Profil = () => {
           initialValues={user}
           validationSchema={schemaFormUser}
           onSubmit={(values) => {
-            
+
 
             // setTimeout(() => {
             //   alert(JSON.stringify(values, null, 2));
@@ -69,22 +71,34 @@ const Profil = () => {
         >
           {() => (
             <Form className='flex flex-col p-2'>
+              Profil
               <div>
-                Profil
                 <p>
                   {user.email}
                 </p>
-                <MyTextInput
-                  label="lastname"
-                  name="Nom"
-                  type="text"
-                  placeholder="votre nom"
-                  onChange={e => setUser({...user, lastname: e.target.value})}
-                  value={user.lastname}
-                />
+                <div className={myClassName}>
+                  <MyTextInput
+                    label="Votre nom"
+                    name="lastname"
+                    type="text"
+                    placeholder="votre nom"
+                    onChange={e => setUser({ ...user, lastname: e.target.value })}
+                    value={user.lastname}
+                  />
+                </div>
                 <p>
                   {user.lastname}
                 </p>
+                <div className={myClassName}>
+                  <MyTextInput
+                    label="Votre prénom"
+                    name="lastname"
+                    type="text"
+                    placeholder="votre prénom"
+                    onChange={e => setUser({ ...user, firstname: e.target.value })}
+                    value={user.firstname}
+                  />
+                </div>
                 <p>
                   {user.firstname}
                 </p>
