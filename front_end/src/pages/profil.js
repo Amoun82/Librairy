@@ -28,8 +28,8 @@ const Profil = () => {
       console.log(res.data);
       setUser({
         email: res.data.email,
-        lastname: res.data.lastname,
-        firstname: res.data.firstname
+        lastName: res.data.lastname,
+        firstName: res.data.firstname
       })
     }).catch(function (error) {
       // handle error
@@ -53,24 +53,22 @@ const Profil = () => {
 
   return (
     <div className='flex justify-center'>
-      {console.log('profil', isAuthenticated, hasRoles, hasId)}
       {user && (console.log(user))}
       {user && (
 
         <Formik
           initialValues={user}
-          validationSchema={schemaFormUser}
           onSubmit={(values) => {
+            console.log('test', values);
 
-
-            // setTimeout(() => {
-            //   alert(JSON.stringify(values, null, 2));
-            //   setSubmitting(false);
-            // }, 400);
+            setTimeout(() => {
+              alert(JSON.stringify(values, null, 2));
+            }, 400);
           }}
+          validationSchema={schemaFormUser}
         >
           {() => (
-            <Form className='flex flex-col p-2'>
+            <Form className='flex flex-col p-2 w-80'>
               Profil
               <div>
                 <p>
@@ -79,32 +77,33 @@ const Profil = () => {
                 <div className={myClassName}>
                   <MyTextInput
                     label="Votre nom"
-                    name="lastname"
+                    name="lastName"
                     type="text"
                     placeholder="votre nom"
-                    onChange={e => setUser({ ...user, lastname: e.target.value })}
-                    value={user.lastname}
+                    onChange={e => setUser({ ...user, lastName: e.target.value })}
+                    value={user.lastName || ''}
                   />
                 </div>
                 <p>
-                  {user.lastname}
+                  {user.lastName}
                 </p>
                 <div className={myClassName}>
                   <MyTextInput
                     label="Votre prénom"
-                    name="lastname"
+                    name="firstName"
                     type="text"
                     placeholder="votre prénom"
-                    onChange={e => setUser({ ...user, firstname: e.target.value })}
-                    value={user.firstname}
+                    onChange={e => setUser({ ...user, firstName: e.target.value })}
+                    value={user.firstName || ''}
                   />
                 </div>
                 <p>
-                  {user.firstname}
+                  {user.firstName}
                 </p>
               </div>
 
-              <button className='my-2 md:my-1 bg-accent-2 self-center font-bold p-2 border-2' type="submit">Modifier</button>
+              <button className='my-2 md:my-1 self-center font-bold p-2 border-2' type="submit">Modifier</button>
+
             </Form>
           )}
         </Formik>
