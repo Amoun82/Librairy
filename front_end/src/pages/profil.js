@@ -8,6 +8,7 @@ import { URL } from '../utils/constant/backURL';
 import { getItem } from '../services/localeStorage';
 import { Formik, Form } from 'formik';
 import { schemaFormUser } from '../utils/Formik-yup/yup/yupUser';
+import { MyTextInput } from './../components/inputs/input';
 
 
 const Profil = () => {
@@ -73,6 +74,14 @@ const Profil = () => {
                 <p>
                   {user.email}
                 </p>
+                <MyTextInput
+                  label="lastname"
+                  name="Nom"
+                  type="text"
+                  placeholder="votre nom"
+                  onChange={e => setUser({...user, lastname: e.target.value})}
+                  value={user.lastname}
+                />
                 <p>
                   {user.lastname}
                 </p>
