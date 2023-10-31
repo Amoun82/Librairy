@@ -66,6 +66,7 @@ const Profil = () => {
             }, 400);
           }}
           validationSchema={schemaFormUser}
+          enableReinitialize
         >
           {() => (
             <Form className='flex flex-col p-2 w-80'>
