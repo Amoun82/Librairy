@@ -40,7 +40,7 @@ const Profil = () => {
   }, [])
 
   return (
-    <div>Profil
+    <div className=''>Profil
       {console.log('profil', isAuthenticated, hasRoles, hasId)}
       {user && (console.log(user))}
       {user && (
