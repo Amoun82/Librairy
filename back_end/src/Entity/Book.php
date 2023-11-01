@@ -12,6 +12,8 @@ use ApiPlatform\Metadata\ApiResource;
 use App\Repository\BookRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use ApiPlatform\Metadata\ApiFilter;
+use ApiPlatform\Doctrine\Orm\Filter\SearchFilter;
 
 #[ORM\Entity(repositoryClass: BookRepository::class)]
 #[ApiResource(
@@ -27,6 +29,7 @@ use Doctrine\ORM\Mapping as ORM;
         ),
     ],
 )]
+#[ApiFilter(SearchFilter::class, properties: ['isbn' => 'exact', 'title' => 'partial'])]
 class Book
 {
     #[ORM\Id]
