@@ -15,8 +15,6 @@ const LogOut = () => {
         .replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/");
     })
     setIsAuthenticated(false) ;
-    setIsAuthenticated(false) ;
-    setIsAuthenticated(false) ;
     navigate('/home');
 
   })

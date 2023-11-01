@@ -34,7 +34,10 @@ use Symfony\Component\Validator\Constraints as Assert;
         ),
         new Put(processor: UserPasswordHasher::class),
         new Patch(processor: UserPasswordHasher::class),
-        new Delete(),
+        new Delete(
+            security: "is_granted('ROLE_ADMIN')",
+            securityMessage: 'vous n\'etes pas admin.'
+        ),
     ],
     normalizationContext: ['groups' => ['user:read']],
     denormalizationContext: ['groups' => ['user:create', 'user:update']],
