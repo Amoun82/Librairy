@@ -13,7 +13,7 @@ import { MyTextInput } from './../components/inputs/input';
 
 const Profil = () => {
   const navigate = useNavigate();
-  const { isAuthenticated, hasRoles, hasId } = useContext(Auth);
+  const { isAuthenticated } = useContext(Auth);
   const [user, setUser] = useState({});
 
   const myClassName = 'flex my-2 flex-col md:h-24';

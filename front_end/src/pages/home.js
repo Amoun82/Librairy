@@ -31,7 +31,12 @@ const Home = () => {
       {
         //*******************************! Section Explication *******************************//
       }
-        Explication
+        <h1 className="text-center">Bibliothéque</h1>
+        <div className="flex justify-center">
+          Explication breve du site
+          Rechercher un livre
+
+        </div>
         {console.log('document',document.cookie.islogged)}
         {console.log('cookies react',cookies.islogged)}
     </main>
