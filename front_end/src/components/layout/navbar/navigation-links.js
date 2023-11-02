@@ -45,7 +45,7 @@ const NavigationLinks = ({ isOpen }) => {
     <div
       className={`${
         isScrollingDown ? "hidden" : "block"
-      } pt-4 md:p-1 fixed h-full w-full border-b bg-primary ${
+      } pt-4 md:p-1 fixed h-full w-full border-b bg-cyan-500 ${
         isOpen
           ? "top-0 mt-16 border-t transform translate-x-0 z-10"
           : "md:static md:transform-none -translate-x-full"

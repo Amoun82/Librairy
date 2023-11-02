@@ -13,7 +13,7 @@ const Navlink = ({ imageSrc, altText, text, to, isOpen }) => {
         <img
           src={imageSrc}
           alt={altText}
-          className="h-16 w-16 rounded-full md:hidden object-cover"
+          className="h-16 w-16 md:hidden object-cover"
         />
         {/* Text nav */}
         <p className="flex-grow text-lg md:hover:text-accent-2 ps-5 md:ps-0">{text}</p>
