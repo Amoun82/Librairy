@@ -36,7 +36,7 @@ const Livres = () => {
                 <div class="px-6 py-4">
                   <div class="font-bold text-xl mb-2">{book.title}</div>
                   <p class="text-gray-700 text-base">
-                    {book.summary}
+                    {book.summary.slice(0,50)}
                   </p>
                   <p>{book.isbn}</p>
                 </div>
