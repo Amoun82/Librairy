@@ -73,7 +73,7 @@ const Home = () => {
       <div className="flex flex-col mx-20 justify-center">
         Liste Livres
         {listBooks && (
-          <div>
+          <div className="flex flex-col md:flex-row">
             {listBooks.map((book, index) => {
               console.log(index)
               if (index < 6) {
@@ -88,7 +88,6 @@ const Home = () => {
                         <p>{book.isbn}</p>
                       </div>
                   </div>
-                  
                 </>
               }
 
