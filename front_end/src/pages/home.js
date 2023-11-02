@@ -71,7 +71,6 @@ const Home = () => {
       </div>
 
       <div className="flex flex-col mx-20 justify-center">
-        Liste Livres
         {listBooks && (
           <div className="flex justify-center flex-col md:flex-row md:flex-wrap">
             {listBooks.map((book, index) => {
@@ -87,9 +86,7 @@ const Home = () => {
                     <p>{book.isbn}</p>
                   </div>
                 </div>
-
               }
-
 
             })}
           </div>
