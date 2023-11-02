@@ -6,10 +6,15 @@ import { URL } from '../utils/constant/backURL';
 const Home = () => {
   const imageScrollPortrait = useRef(null);
 
-  const [listBooks , setListBooks] = useState({}) ;
+  const [listBooks , setListBooks] = useState([]) ;
 
   const [cookies] = useCookies();
 
+  const [integer, setInteger] = useState() ;
+
+  function getRndInteger(min, max) {
+    return Math.floor(Math.random() * (max - min)) + min;
+  }
 
   const books = async () => {
     await axios.get(URL.books + '?page=1'
@@ -75,7 +80,18 @@ const Home = () => {
 
       <div className="flex flex-col mx-20 justify-center">
         Liste Livres
-        { listBooks && (console.log('listBooks',listBooks))}
+        {console.log('function random',getRndInteger(4,10))}
+        { listBooks && (
+          <div>
+            {listBooks.map((book) => {console.log(book)
+
+
+              return <div>{book.title}</div>
+
+            })}
+            {console.log('listBooks',listBooks)}
+          </div>
+        )}
       </div>
     </main>
   );
