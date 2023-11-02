@@ -76,14 +76,14 @@ const Home = () => {
             {listBooks.map((book, index) => {
               console.log(index)
               if (index < 6) {
-                return <div class="max-w-sm rounded overflow-hidden shadow-lg mx-2 my-2 md:w-1/4">
+                return <div key={book.id} class="max-w-sm rounded overflow-hidden shadow-lg mx-2 my-2 md:w-1/4">
                   <img class="w-full" src="/img/card-top.jpg" alt="Sunset in the mountains" />
-                  <div class="px-6 py-4">
-                    <div class="font-bold text-xl mb-2">{book.title}</div>
+                  <div class="px-6 py-4 my-1">
+                    <div class="font-bold text-xl mb-2">Titre : {book.title}</div>
                     <p class="text-gray-700 text-base">
-                      {book.summary}
+                      Résumé : {book.summary}
                     </p>
-                    <p>{book.isbn}</p>
+                    <p>Isbn : {book.isbn}</p>
                   </div>
                 </div>
               }
