@@ -11,6 +11,7 @@ import Register from "./pages/register";
 import Login from './pages/login';
 import LogOut from "./components/account/logOut";
 import NotFound from "./pages/pageNotFound";
+import Livres from "./pages/Livres";
 
 
 
@@ -29,6 +30,7 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/logout" element={<LogOut />} />
             <Route path="/profil" element={<Profil />} />
+            <Route path="/Books" element={<Livres />} />
             <Route path='*' element={<NotFound />}/>
           </Route>
         </Routes>
