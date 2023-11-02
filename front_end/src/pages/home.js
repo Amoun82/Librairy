@@ -6,20 +6,14 @@ import { URL } from '../utils/constant/backURL';
 const Home = () => {
   const imageScrollPortrait = useRef(null);
 
-  const [listBooks , setListBooks] = useState([]) ;
+  const [listBooks, setListBooks] = useState([]);
 
   const [cookies] = useCookies();
 
-  const [integer, setInteger] = useState() ;
-
-  function getRndInteger(min, max) {
-    return Math.floor(Math.random() * (max - min)) + min;
-  }
-
   const books = async () => {
     await axios.get(URL.books + '?page=1'
-      ).then((res) => {
-      console.log(res.data['hydra:member']);
+    ).then((res) => {
+      // console.log(res.data['hydra:member']);
       setListBooks(
         res.data['hydra:member']
       )
@@ -50,9 +44,9 @@ const Home = () => {
   }, []);
 
   useEffect(() => {
-    console.log('test axios');
+    // console.log('test axios');
     // ?page=1
-    books() ;
+    books();
   }, [])
 
   return (
@@ -75,21 +69,31 @@ const Home = () => {
           Rechercher un livre dans la liste et ajouter le à votre Bibliothéque
         </p>
       </div>
-      {console.log('document', document.cookie.islogged)}
-      {console.log('cookies react', cookies.islogged)}
 
       <div className="flex flex-col mx-20 justify-center">
         Liste Livres
-        {console.log('function random',getRndInteger(4,10))}
-        { listBooks && (
+        {listBooks && (
           <div>
-            {listBooks.map((book) => {console.log(book)
+            {listBooks.map((book, index) => {
+              console.log(index)
+              if (index < 6) {
+                return <>
+                  <div class="max-w-sm rounded overflow-hidden shadow-lg">
+                    <img class="w-full" src="/img/card-top.jpg" alt="Sunset in the mountains" />
+                      <div class="px-6 py-4">
+                        <div class="font-bold text-xl mb-2">{book.title}</div>
+                        <p class="text-gray-700 text-base">
+                          {book.summary}
+                        </p>
+                        <p>{book.isbn}</p>
+                      </div>
+                  </div>
+                  
+                </>
+              }
 
-
-              return <div>{book.title}</div>
 
             })}
-            {console.log('listBooks',listBooks)}
           </div>
         )}
       </div>
