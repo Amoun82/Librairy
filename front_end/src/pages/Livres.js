@@ -26,7 +26,7 @@ const Livres = () => {
   }, [])
 
   return (
-    <div>
+    <div className='flex justify-center'>
 
       {listBooks && (
         <div className="flex justify-center flex-col md:flex-row md:flex-wrap">

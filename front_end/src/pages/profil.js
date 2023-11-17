@@ -40,15 +40,6 @@ const Profil = () => {
     })
   }
 
-  const updateProfil = async () => {
-    await axios.post(URL.user + `/${getItem('Id')}`, {
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: 'Bearer ' + getItem('Token')
-      }
-    })
-  }
-
   useEffect(() => {
     if (!isAuthenticated) {
       navigate('/home')
@@ -68,7 +59,22 @@ const Profil = () => {
           initialValues={user}
           onSubmit={(values) => {
             console.log('test', values);
+            const updateProfil = async () => {
+              await axios.put(URL.user + `/${getItem('Id')}`, {
+                lastname: values.lastName,
+                firstname: values.firstName
+              }, {
+                headers: {
+                  'Content-Type': 'application/json',
+                  Authorization: 'Bearer ' + getItem('Token')
+                }
+              }).then((res) => {
+                console.log(res);
+                navigate('/profil')
+              })
+            }
 
+            updateProfil() ;
             setTimeout(() => {
               alert(JSON.stringify(values, null, 2));
             }, 400);
