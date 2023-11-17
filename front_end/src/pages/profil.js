@@ -9,7 +9,6 @@ import { getItem } from '../services/localeStorage';
 import { Formik, Form } from 'formik';
 import { schemaFormUser } from '../utils/Formik-yup/yup/yupUser';
 import { MyTextInput } from './../components/inputs/input';
-import { defaultUser } from '../utils/Formik-yup/default-value-form/defaultValuesUser';
 
 
 const Profil = () => {
@@ -48,7 +47,6 @@ const Profil = () => {
       console.log(getItem('Token'));
       console.log(getItem('Id'));
       profil();
-      console.log('test',defaultUser);
     }
   }, [])
 
