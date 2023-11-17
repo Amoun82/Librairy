@@ -9,6 +9,7 @@ import { getItem } from '../services/localeStorage';
 import { Formik, Form } from 'formik';
 import { schemaFormUser } from '../utils/Formik-yup/yup/yupUser';
 import { MyTextInput } from './../components/inputs/input';
+import { defaultUser } from '../utils/Formik-yup/default-value-form/defaultValuesUser';
 
 
 const Profil = () => {
@@ -47,6 +48,7 @@ const Profil = () => {
       console.log(getItem('Token'));
       console.log(getItem('Id'));
       profil();
+      console.log('test',defaultUser);
     }
   }, [])
 
@@ -73,7 +75,7 @@ const Profil = () => {
               })
             }
 
-            updateProfil() ;
+            updateProfil();
             setTimeout(() => {
               alert(JSON.stringify(values, null, 2));
             }, 400);
@@ -81,8 +83,9 @@ const Profil = () => {
           validationSchema={schemaFormUser}
           enableReinitialize
         >
-          {() => (
+          {(props) => (
             <Form className='flex flex-col p-2 w-80'>
+              {console.log(props)}
               Profil
               <div>
                 <p>
@@ -97,7 +100,7 @@ const Profil = () => {
                     onChange={e => setUser({ ...user, lastName: e.target.value })}
                   />
                 </div>
-                {/* <div className={myClassName}>
+                <div className={myClassName}>
                   <MyTextInput
                     label="Votre prénom"
                     name="firstName"
@@ -105,7 +108,7 @@ const Profil = () => {
                     placeholder="votre prénom"
                     onChange={e => setUser({ ...user, firstName: e.target.value })}
                   />
-                </div> */}
+                </div>
               </div>
 
               <button className='my-2 md:my-1 self-center font-bold p-2 border-2' type="submit">Modifier</button>
