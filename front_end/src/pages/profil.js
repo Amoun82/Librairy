@@ -52,7 +52,6 @@ const Profil = () => {
 
   return (
     <div className='flex justify-center'>
-      {user && (console.log(user))}
       {user && (
 
         <Formik
@@ -95,16 +94,18 @@ const Profil = () => {
                     name="lastName"
                     type="text"
                     placeholder="votre nom"
+                    onChange={e => setUser({ ...user, lastName: e.target.value })}
                   />
                 </div>
-                <div className={myClassName}>
+                {/* <div className={myClassName}>
                   <MyTextInput
                     label="Votre prénom"
                     name="firstName"
                     type="text"
                     placeholder="votre prénom"
+                    onChange={e => setUser({ ...user, firstName: e.target.value })}
                   />
-                </div>
+                </div> */}
               </div>
 
               <button className='my-2 md:my-1 self-center font-bold p-2 border-2' type="submit">Modifier</button>
