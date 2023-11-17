@@ -34,7 +34,7 @@ use Symfony\Component\Validator\Constraints as Assert;
             security: "is_granted('ROLE_ADMIN') or object == user",
             securityMessage: 'désolé, vous ne pouvez voir que votre compte.'
         ),
-        new Put(processor: UserPasswordHasher::class),
+        new Put(processor: UserPasswordHasher::class, validationContext: ['groups' => ['Default', 'user:update']]),
         new Patch(processor: UserPasswordHasher::class),
         new Delete(
             security: "is_granted('ROLE_ADMIN')",

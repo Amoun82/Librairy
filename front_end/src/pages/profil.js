@@ -40,13 +40,21 @@ const Profil = () => {
     })
   }
 
+  const updateProfil = async () => {
+    await axios.post(URL.user + `/${getItem('Id')}`, {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: 'Bearer ' + getItem('Token')
+      }
+    })
+  }
+
   useEffect(() => {
     if (!isAuthenticated) {
       navigate('/home')
     } else {
       console.log(getItem('Token'));
       console.log(getItem('Id'));
-
       profil();
     }
   }, [])
